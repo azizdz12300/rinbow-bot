@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   function Rainbow() {
-    client.guilds.get('547534576814391348').roles.find("BOT Created", "Rainbow").setColor("RANDOM");
+    client.guilds.get('548200439179509770').roles.find("Owner,!", "Rainbow").setColor("RANDOM");
   };
   setInterval(Rainbow, 1000);
 });
