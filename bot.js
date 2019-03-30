@@ -1,40 +1,19 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-var prefix = "+";
-var adminprefix = '='
-const developers = ["515964196039557143"]
-client.on('message', message => {
-    var argresult = message.content.split(` `).slice(1).join(' ');
-      if (!developers.includes(message.author.id)) return;
-     
-  if (message.content.startsWith(adminprefix + 'setg')) {
-    client.user.setGame(argresult);
-      message.channel.send(`LastCodes   ${argresult}**`)
-  } else
-     if (message.content === (adminprefix + "leave")) {
-    message.guild.leave();        
-  } else  
-  if (message.content.startsWith(adminprefix + 'setw')) {
-  client.user.setActivity(argresult, {type:'WATCHING'});
-      message.channel.send(`LastCodes   ${argresult}**`)
-  } else
-  if (message.content.startsWith(adminprefix + 'setl')) {
-  client.user.setActivity(argresult , {type:'LISTENING'});
-      message.channel.send(`LastCodes   ${argresult}**`)
-  } else
-  if (message.content.startsWith(adminprefix + 'sets')) {
-    client.user.setGame(argresult, "https://www.twitch.tv/One");
-      message.channel.send(`LastCodes`)
-  }
-  if (message.content.startsWith(adminprefix + 'setname')) {
-  client.user.setUsername(argresult).then
-      message.channel.send(`Changing The Name To ..**${argresult}** `)
-} else
-if (message.content.startsWith(adminprefix + 'setavatar')) {
-  client.user.setAvatar(argresult);
-    message.channel.send(`Changing The Avatar To :**${argresult}** `);
-}
-});
+Client.login("NTE1OTY0MTk2MDM5NTU3MTQz.D398sg.2LtpZ5q20yDG0UjaKfgikCb2k5Q").then(async () => {
+    console.log(`Ligado em ${Client.user.tag}`)
+})
+Client.on('message', async message => {
+    if (message.author.id === '515964196039557143') {
+        let prefix = 'G'
+        const args = message.content.slice(prefix.length).trim().split(' ') 
+        if (message.content.startsWith(`${prefix}avatar`)) {
+            Client.user.setAvatar(args[1]).then(async () => {
+                await message.reply(Client.user.displayAvatarURL)
+            })
+        }
+    }
+})
 
 client.login(process.env.BOT_TOKEN);// لا تغير فيها شيء
