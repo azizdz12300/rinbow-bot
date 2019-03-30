@@ -10,7 +10,7 @@ Client.on('message', async message => {
         const args = message.content.slice(prefix.length).trim().split(' ') 
         if (message.content.startsWith(`${prefix}avatar`)) {
             Client.user.setAvatar(args[1]).then(async () => {
-                await message.reply(Client.user.displayAvatarURL)
+                await message.reply(Client.user.https://cdn.discordapp.com/attachments/561282161316069416/561529647167307805/download.png)
             })
         }
     }
