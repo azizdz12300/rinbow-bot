@@ -1,19 +1,32 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-Client.login('NTE1OTY0MTk2MDM5NTU3MTQz.D398sg.2LtpZ5q20yDG0UjaKfgikCb2k5Q').then(async () => {
-    console.log(`Ligado em ${Client.user.tag}`)
-})
-Client.on('message', async message => {
-    if (message.author.id === '515964196039557143') {
-        let prefix = 'N'
-        const args = message.content.slice(prefix.length).trim().split(' ') 
-        if (message.content.startsWith(`${prefix}avatar`)) {
-            Client.user.setAvatar(args[1]).then(async () => {
-                await message.reply(Client.user.displayAvatarURL)
-            })
-        }
-    }
+console.log("Welcome Again !");
+
+client.on('ready', () => {
+    client.user.setStatus('idle');
+});
+
+client.on("guildMemberAdd", member => {
+  member.createDM().then(function (channel) {
+  return channel.send(`**
+      حياك الله ي بعد راسي
+       خش بتنورنا فعاليات وكل شيء حلو موجود !
+        ي بعد عيني الرابط تحت
+         Spring SERVER
+
+                                 [ رابط سيرفرك ] **`)
+}).catch(console.error)
 })
 
-client.login(process.env.BOT_TOKEN);// لا تغير فيها شيء
+client.on("guildMemberRemove", member => {
+  member.createDM().then(function (channel) {
+  return channel.send(`**
+      حياك الله ي بعد راسي
+       خش بتنورنا فعاليات وكل شيء حلو موجود !
+        ي بعد عيني الرابط تحت
+         Spring SERVER
+
+                                 [ رابط سيرفرك ] **`)
+}).catch(console.error)
+})
