@@ -1,27 +1,64 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 const client = new Discord.Client();
-
-
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  client.user.setGame(` Scrapy .#2002 .`)
+  console.log('---------------');
+  console.log(' Bot Is Online')
+  console.log('---------------')
 });
+var prefix = "Z";
+client.on('message', message => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
 
-client.on('message', function(message) {
-                  if(!message.channel.guild) return;
-    if(message.content ===  '+setcolors') {
-        if(message.member.hasPermission('MANAGE_ROLES')) {
-            setInterval(function(){})
-            message.channel.send('جاري عمل الالوان يرجى الانتظار لمدة دقيقة |white_check_mark')
-        }else{
-            message.channel.send('ما معاك البرمشن المطلوب  |x')
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+
+  if (command == "say") {
+   message.channel.sendMessage(args.join("  "))
+  }
+});
+client.on('message', message=>{
+    if (message.content === prefix + 'add-colors'){
+        if (message.channel.guild){
+            if (message.member.hasPermission('MANAGE_ROLES')){
+                setInterval(function(){})
+                  let count = 0;
+                  let ecount = 0;
+        for(let x = 0; x < 110; x++){
+            message.guild.createRole({name:x,
+            color: 'RANDOM'})
+      }
+            }else{
+                message.channel.sendMessage('? **You do not have permission to write this command**')
             }
+        }else{
+            message.channel.sendMessage('?  **This command only in servers**')
+        }
     }
+    if (message.content === prefix + 'de-colors'){
+                if (message.channel.guild){
+            if (message.member.hasPermission('MANAGE_ROLES')){
+                setInterval(function(){})
+                  let count = 0;
+                  let ecount = 0;
+        for(let x = 0; x < 110; x++){
+            message.guild.roles.find('name', x).delete()
+      }
+            }else{
+                message.channel.sendMessage('**You do not have permission to write this command**')
+            }
+        }else{
+            message.channel.sendMessage('**This command only in servers**')
+        }
+    }
+    
+})
+client.on('message', msg => {
+  if (msg.content === '*add-colors') {
+    msg.reply('**تم اضافه الاوان بنجاح**');
+  }
 });
-
-
-
-
-
-
-
-client.login('token');
+   client.login('token');
