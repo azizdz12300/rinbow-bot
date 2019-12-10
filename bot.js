@@ -7,7 +7,7 @@ client.on('ready', () => {
 
 const rWlc = {}
 client.on('message', message => { 
-var prefix = "-";//البرفكس  
+var prefix = "/";//البرفكس  
 
 client.on('message', function(message) {
     if(!message.channel.guild) return;
