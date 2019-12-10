@@ -1,13 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
-
-const rWlc = {}
-client.on('message', message => { 
-var prefix = "/";//البرفكس  
 
 client.on('message', function(message) {
     if(!message.channel.guild) return;
