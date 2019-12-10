@@ -1,32 +1,46 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 const client = new Discord.Client();
 
-console.log("Welcome Again !");
-
 client.on('ready', () => {
-    client.user.setStatus('idle');
+  console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on("guildMemberAdd", member => {
-  member.createDM().then(function (channel) {
-  return channel.send(`**
-      حياك الله ي بعد راسي
-       خش بتنورنا فعاليات وكل شيء حلو موجود !
-        ي بعد عيني الرابط تحت
-         Spring SERVER
+const rWlc = {}
+client.on('message', message => { 
+var prefix = "-";//البرفكس  
 
-                                 [ رابط سيرفرك ] **`)
-}).catch(console.error)
-})
+client.on('message', function(message) {
+    if(!message.channel.guild) return;
+           if (message.content.startsWith(prefix + "colors create")) {
+    if(message.member.hasPermission('MANAGE_ROLES')) {
+    setInterval(function(){})
+    message.channel.send('يتم انشاء 200 لون انتضر | ▶️')
+    }else{
+    message.channel.send('ما معاك البرمشن المطلوب |❌🚫')
+    }
+    }
+    });
+    
+    client.on('message', message=>{
+    if (message.content === 'colors create'){
+    if(!message.channel.guild) return;
+    if (message.member.hasPermission('MANAGE_ROLES')){
+    setInterval(function(){})
+    let count = 0;
+    let ecount = 0;
+    for(let x = 1; x < 200; x++){
+    message.guild.createRole({name:x,
+    color: 'RANDOM'})
+    }
+    }
+    }
+    });
 
-client.on("guildMemberRemove", member => {
-  member.createDM().then(function (channel) {
-  return channel.send(`**
-      حياك الله ي بعد راسي
-       خش بتنورنا فعاليات وكل شيء حلو موجود !
-        ي بعد عيني الرابط تحت
-         Spring SERVER
 
-                                 [ رابط سيرفرك ] **`)
-}).catch(console.error)
-})
+
+
+
+
+
+
+client.login('token');
